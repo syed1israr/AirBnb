@@ -1,14 +1,25 @@
-const express = require('express'); // Require express correctly
+const express = require('express');
 const app = express();
-const hotelRouter=require('../Airbnd/Routes/Hotels.route.js')
-app.use(express.json());
-app.use('/api/hotels',hotelRouter);
-const PORT = 3900; // Define PORT as a constant
+const hotelRouter = require('../Airbnd/Routes/Hotels.route.js');
+const ConnectDB = require("../Airbnd/Config/MongoDBConfig.js");
+const { default: mongoose } = require('mongoose');
+const Router= require('./Routes/Data.route.js')
 
-app.get('/', (req, res) => {
-  res.send('hello israr'); // Send the response string
+const PORT = process.env.PORT || 3900; // Define PORT as a constant
+
+ConnectDB();
+
+mongoose.connection.once("open", () => {
+  console.log("connection successful");
+  app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
+  });
 });
 
-app.listen(process.env.PORT || PORT, () => { // Start the server and handle potential errors
-  console.log(`Server listening on port ${PORT}`); // Log the port for clarity
+app.use(express.json());
+app.use('/api/hotelsData',Router)
+app.use('/api/hotels', hotelRouter);
+
+app.get('/', (req, res) => {
+  res.send('hello israr');
 });
