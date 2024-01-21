@@ -6,6 +6,8 @@ const { default: mongoose } = require('mongoose');
 const HotelDataRouter= require('./Routes/hotelData.route.js')
 const CategoryDataRouter=require('./Routes/CategoryData.route.js')
 const CategoryRouter=require('../Airbnd/Routes/Categories.route.js')
+const  SinglehotelRouter=require('./Routes/SingleHotel.route.js')
+
 
 const PORT = process.env.PORT || 3900; // Define PORT as a constant
 
@@ -23,6 +25,7 @@ app.use('/api/hotelsData',HotelDataRouter)
 app.use('/api/hotels', hotelRouter);
 app.use('/api/categoryData', CategoryDataRouter);
 app.use('/api/category',CategoryRouter);
+app.use('/api/hotel',SinglehotelRouter)
 
 
 app.get('/', (req, res) => {
