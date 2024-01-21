@@ -8,6 +8,7 @@ const CategoryDataRouter=require('./Routes/CategoryData.route.js')
 const CategoryRouter=require('../Airbnd/Routes/Categories.route.js')
 const  SinglehotelRouter=require('./Routes/SingleHotel.route.js')
 const registerUserRouter=require('./Routes/Auth.route.js')
+const WishlistRouter=require("../Airbnd/Routes/Wishlist.route.js")
 
 const dotenv=require('dotenv');
 
@@ -32,7 +33,7 @@ app.use('/api/categoryData', CategoryDataRouter);
 app.use('/api/category',CategoryRouter);
 app.use('/api/hotel',SinglehotelRouter);
 app.use('/api/auth',registerUserRouter);
-
+app.use('/api/wishlist',WishlistRouter);
 
 app.get('/', (req, res) => {
   res.send('hello israr');
