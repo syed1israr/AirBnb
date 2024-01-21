@@ -1,14 +1,7 @@
 const express = require('express');
 const Router = express.Router();
-const category = require('../Models/Category.model.js');
+const Category_handler=require('../Controllers/Category.contoller.js')
 
-Router.route('/').get(async (req, res) => {
-    try {
-        const categories = await category.find({});
-        res.json(categories);
-    } catch (error) {
-        res.status(404).json({ message: "Couldn't get the category from DataBase" });
-    }
-});
+Router.route('/').get(Category_handler);
 
 module.exports = Router;

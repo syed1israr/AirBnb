@@ -9,11 +9,7 @@ const CategoryRouter=require('../Airbnd/Routes/Categories.route.js')
 const  SinglehotelRouter=require('./Routes/SingleHotel.route.js')
 const registerUserRouter=require('./Routes/Auth.route.js')
 const WishlistRouter=require("../Airbnd/Routes/Wishlist.route.js")
-
 const dotenv=require('dotenv');
-
-
-
 const PORT = process.env.PORT || 3900; 
 
 ConnectDB();
